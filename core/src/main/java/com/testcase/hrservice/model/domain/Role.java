@@ -1,4 +1,4 @@
-package com.testcase.hrservice.model;
+package com.testcase.hrservice.model.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,8 +12,8 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "POST")
-public class Post {
+@Table(name = "ROLE")
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

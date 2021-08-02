@@ -24,18 +24,33 @@
         </dependency>
         <dependency>
             <groupId>com.testcase</groupId>
-            <artifactId>api-rest-adapter</artifactId>
+            <artifactId>hibernate-adapter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.testcase</groupId>
-            <artifactId>hibernate-adapter</artifactId>
+            <artifactId>kafka-adapter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.testcase</groupId>
+            <artifactId>api-rest-adapter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.testcase</groupId>
             <artifactId>core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.testcase</groupId>
+            <artifactId>api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.5</version>
         </dependency>
     </dependencies>
 

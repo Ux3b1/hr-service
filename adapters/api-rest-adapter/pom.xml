@@ -23,13 +23,19 @@
         </dependency>
         <dependency>
             <groupId>com.testcase</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>hibernate-adapter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.testcase</groupId>
-            <artifactId>hibernate-adapter</artifactId>
+            <artifactId>api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
         </dependency>
     </dependencies>
 </project>

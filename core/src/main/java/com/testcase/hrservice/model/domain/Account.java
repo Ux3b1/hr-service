@@ -1,4 +1,4 @@
-package com.testcase.hrservice.model;
+package com.testcase.hrservice.model.domain;
 
 import lombok.*;
 
@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Builder
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,8 +18,6 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "TYPE", nullable = false)
-    private Integer type;
     @Column(name = "IS_ACTIVE", nullable = false)
     private Boolean isActive;
     @Column(name = "FIO", nullable = false)
@@ -33,4 +32,8 @@ public class Account {
 
     @OneToOne(targetEntity = Role.class)
     private Role role;
+
+    public void block() {
+        this.isActive = Boolean.TRUE;
+    }
 }
