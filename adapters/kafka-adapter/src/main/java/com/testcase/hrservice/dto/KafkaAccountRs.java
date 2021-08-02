@@ -9,11 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountRq {
-    Long id;
-    Integer type;
-    String role;
-    String fio;
-    String post;
+public class KafkaAccountRs {
+    Long userId;
     String userName;
+    String pass;
 }

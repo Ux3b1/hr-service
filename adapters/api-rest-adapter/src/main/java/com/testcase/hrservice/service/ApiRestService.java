@@ -1,8 +1,8 @@
 package com.testcase.hrservice.service;
 
 import com.testcase.hrservice.converter.AccountRq2AccountConverter;
-import com.testcase.hrservice.dto.AccountRq;
-import com.testcase.hrservice.dto.AccountRs;
+import com.testcase.hrservice.dto.RestAccountRq;
+import com.testcase.hrservice.dto.RestAccountRs;
 import com.testcase.hrservice.exception.*;
 import com.testcase.hrservice.model.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +16,20 @@ public class ApiRestService {
     @Autowired
     private AccountRq2AccountConverter converter;
 
-    public AccountRs createAccount(AccountRq accountRq) {
+    public RestAccountRs createAccount(RestAccountRq restAccountRq) {
         try {
-            Account account = service.createAccount(converter.convert(accountRq));
+            Account account = service.createAccount(converter.convert(restAccountRq));
             return buildResponse(account);
         } catch (Exception exception) {
             throw new CreateAccountException();
         }
     }
 
-    public AccountRs blockAccount(Long id) {
+    public RestAccountRs blockAccount(Long id) {
         try {
             service.blockAccount(id);
 
-            return AccountRs.builder()
+            return RestAccountRs.builder()
                     .userId(id)
                     .userName("blocked")
                     .pass("blocked")
@@ -41,17 +41,17 @@ public class ApiRestService {
         }
     }
 
-    public AccountRs updateAccount(AccountRq accountRq) {
+    public RestAccountRs updateAccount(RestAccountRq restAccountRq) {
         try {
-            Account account = service.updateAccount(converter.convert(accountRq));
+            Account account = service.updateAccount(converter.convert(restAccountRq));
             return buildResponse(account);
         } catch (Exception exception) {
             throw new UpdateAccountException();
         }
     }
 
-    private AccountRs buildResponse(Account account) {
-        return AccountRs.builder()
+    private RestAccountRs buildResponse(Account account) {
+        return RestAccountRs.builder()
                 .userId(account.getId())
                 .userName(account.getUserName())
                 .pass(account.getPassword())

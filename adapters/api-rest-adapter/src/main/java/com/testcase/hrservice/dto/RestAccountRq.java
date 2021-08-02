@@ -1,17 +1,18 @@
 package com.testcase.hrservice.dto;
 
+import com.testcase.hrservice.model.dictionary.OperationType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Builder
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountRq {
+public class RestAccountRq {
     Long id;
-    Integer type;
+    OperationType type;
     String role;
     String fio;
     String post;

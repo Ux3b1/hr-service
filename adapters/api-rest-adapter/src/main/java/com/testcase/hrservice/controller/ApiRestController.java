@@ -1,16 +1,16 @@
 package com.testcase.hrservice.controller;
 
 import com.google.gson.Gson;
-import com.testcase.hrservice.dto.AccountRq;
-import com.testcase.hrservice.dto.AccountRs;
+import com.testcase.hrservice.dto.RestAccountRq;
+import com.testcase.hrservice.dto.RestAccountRs;
 import com.testcase.hrservice.exception.BadRequestException;
+import com.testcase.hrservice.model.dictionary.OperationType;
 import com.testcase.hrservice.model.dictionary.SystemType;
 import com.testcase.hrservice.model.logging.InputLog;
 import com.testcase.hrservice.service.ApiRestService;
 import com.testcase.hrservice.service.LoggingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,20 +32,20 @@ public class ApiRestController {
     }
     
     @PostMapping(value = "/postAccount", produces = MediaType.APPLICATION_JSON_VALUE)
-    public AccountRs postAccount(@RequestBody AccountRq accountRq) {
+    public RestAccountRs postAccount(@RequestBody RestAccountRq restAccountRq) {
         loggingService.logIt(InputLog.builder()
                 .system(SystemType.REST)
-                .message(serializer.toJson(accountRq))
+                .message(serializer.toJson(restAccountRq))
                 .build());
 
-        if (accountRq == null) {
+        if (restAccountRq == null) {
             throw new BadRequestException();
-        } else if (accountRq.getType() == 1) {
-            return restService.createAccount(accountRq);
-        } else if (accountRq.getType() == 2) {
-            return restService.blockAccount(accountRq.getId());
-        } else if (accountRq.getType() == 3) {
-            return restService.updateAccount(accountRq);
+        } else if (OperationType.CREATE.equals(restAccountRq.getType())) {
+            return restService.createAccount(restAccountRq);
+        } else if (OperationType.BLOCK.equals(restAccountRq.getType())) {
+            return restService.blockAccount(restAccountRq.getId());
+        } else if (OperationType.UPDATE.equals(restAccountRq.getType())) {
+            return restService.updateAccount(restAccountRq);
         } else {
             throw new BadRequestException();
         }

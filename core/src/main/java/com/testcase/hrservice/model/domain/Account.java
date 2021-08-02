@@ -34,6 +34,6 @@ public class Account {
     private Role role;
 
     public void block() {
-        this.isActive = Boolean.TRUE;
+        this.isActive = Boolean.FALSE;
     }
 }
